@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Memory Diary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500&family=Charm:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="intro-overlay" id="introOverlay">
+    <div class="envelope-wrapper" id="envelope">
+      <div class="envelope-flap"></div>
+      <div class="letter-paper">
+        <p>เพราะทุกเรื่องราวที่เคยเกิดขึ้น<br>คือสิ่งที่มีค่าสำหรับเราไม่เคยลืม</p>
+        <span class="click-hint">คลิกอีกครั้งเพื่อเปิดสมุดบันทึก</span>
+      </div>
+      <div class="envelope-body"></div>
+    </div>
+  </div>
+
+  <div class="main-content" id="mainContent">
+    <div class="diary-book">
+      
+      <div class="diary-page page-left active" data-page="1">
+        <div class="photo-frame">
+          <img src="/picture/IMG_8373.jpg" alt="ครั้งแรกที่เจอกัน">
+        </div>
+      </div>
+      <div class="diary-page page-right active" data-page="1">
+        <div class="date">📍 MEMORY 01 — ครั้งแรกทื่ได้เจอเธอ</div>
+        <p class="story-text">
+          จำครั้งแรกที่เราเจอกันได้ไหม? ตอนนั้นเรากลัวเธอจะไม่ชอบเรามากและตอนนั้นเป็นครั้งแรกที่นัดเจอคนเราก็แอบกลัวนะ 
+          แต่พอเราถึงเราก็โทรมาเธอ ถามว่าเธออยู่ตรงไหน เธอก็บอกให้เราเดินมา เราก็เดินไปเจอผู้หญิงน่ารักคนนึงใส่แมสแอบอยู่หลังเสาในรูป พอมาเจอจิงๆเธอแม่งโครตน่ารัก
+          คนไรน่ารักขนาดนี้ เรารู้สึกโชคดีมากเลย
+      </div>
+
+      <!-- หน้า 2 ฝั่งซ้าย (ปรับปรุงแก้ไขเพิ่มตรงนี้) -->
+      <div class="diary-page page-left" data-page="2">
+        <!-- เพิ่มคลาส clickable-gallery เพื่อให้กดเปลี่ยนรูปได้ และมีลูกเล่นบอกใบ้เวลาเมาส์ชี้ -->
+        <div class="photo-frame clickable-gallery" id="foodGallery">
+          <!-- รูปเริ่มต้น (รูปแรก) -->
+          <img src="/picture/6f609933ed7b49e98f4a9b3266ae4a8a.jpg" alt="ร้านเดทแรก" id="galleryImg">
+          <span class="gallery-hint">แตะที่รูปเพื่อดูรูปถัดไป ✨</span>
+        </div>
+      </div>
+      <!-- หน้า 2 ฝั่งขวา (เหมือนเดิม) -->
+      <div class="diary-page page-right" data-page="2">
+        <div class="date">🍲 MEMORY 02 — ร้านแรกที่เราไปเดตกัน</div>
+        <p class="story-text">
+          ร้านนี้เป็นร้านแรกที่เรามาเดตกัน เรายังจำเมนูที่เรากินด้วยกันได้อยู่เลย เป็นไก่ทอดกับบิงซูเมล่อน เราจำได้ว่าเราขอป้อนเธอด้วยเป็นไก่ทอดแต่กลัวเธอร้อนเราเลยเป่าให้ ตอนนั้นรู้สึกอยากให้เวลาเดินไปช้าๆจัง 
+          ตอนเรามองเธอกินเห็นแล้วโครตน่ารัก ตอนเธอเห็นเรามอง เธอก็เขินเอามือปิดหน้า กดที่รูปไปดูเมนูที่เรากินด้วยกันได้นะ
+        </p>
+      </div>
+
+      <div class="diary-page page-left" data-page="3">
+        <div class="photo-frame">
+          <img src="/picture/IMG_8379.jpg" alt="ป้ายรถเมล์">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="3">
+        <div class="date">📍 MEMORY 03 — ป้ายรถเมล์ที่เรามาส่งเธอทุกครั้ง</div>
+        <p class="story-text">
+          เราไม่ชอบป้ายรถเมล์นี้เลย เพราะมันทำให้เราต้องแยกจากกัน เราอยากอยู่กับเธอนาน ไม่อยากให้เธอกลับเลย ทุกครั้งที่เราส่งเธอขึ้นรถเอาจิงเราก็แอบเศร้าตลอดเลยนะ ตอนนั้นเราเลยพยายามมาหาเธอมาเจอเธอตลอดเลย เราอยากอยู่กับเธอนานๆ อยู่กับเธอตลอดเลย
+      </div>
+
+      <div class="diary-page page-left" data-page="4">
+        <div class="photo-frame">
+          <img src="/picture/Screenshot 2569-06-27 at 22.51.58.png" alt="ปากซอยหน้าบ้านเธอ">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="4">
+        <div class="date">📍 MEMORY 04 — ปากซอยบ้านของเธอ</div>
+        <p class="story-text">
+          ครั้งแรกที่เราได้ชึ้นรถเมล์แล้วไปส่งเธอที่หน้าปากซอยบ้านเธอ ตอนนั้นเราอยากไปส่งเธอแถวๆบ้านเธอเลย แต่เธอกลัวพ่อเห็นเราเลยไม่ได้ไปส่งเธอเลย
+      </div>
+
+      <div class="diary-page page-left" data-page="5">
+        <div class="photo-frame">
+          <img src="/picture/ARL.jpg" alt="ได้อุ้มเธอ">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="5">
+        <div class="date">📍 MEMORY 05 — Airlink หัวหมาก</div>
+        <p class="story-text">
+          สถานที่นี้เป็นอีกนึงสถานที่เราสองคนมาบ่อยเวลาเราไปเที่ยวกันเมืองกันเราต้องมาขึ้นไฟฟ้าที่นี้ เป็นสถานที่เป็นความทรงจำเราสองคนที่เยอะเหมือนกัน เราจำได้ว่าตอนนั้นเราอยากจะอุ้มเธอ 
+          เพราะไม่อยากให้เธอเดินเหนื่อย เราเลยขอเธออุ้ม แต่เธอก็ไม่ยอมเพราะเขินคน แต่สุดท้ายเราได้อุ้มเธอในท่าเจ้าหญิง
+      </div>
+
+      <div class="diary-page page-left" data-page="6">
+        <div class="photo-frame">
+          <img src="/picture/IMG_8392.jpg" alt="หนังเรื่องแรกที่เราดูด้วยกัน">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="6">
+        <div class="date">📍 MEMORY 06 — หนังเรื่องแรก</div>
+        <p class="story-text">
+          ไม่รู้เธอจะจำได้ไหมว่าเรื่องแรกที่เราดูด้วยกันคือเรื่องไร แต่เรายังจำได้เสมอเป็นหนังเรื่องแรกที่เราได้ดูด้วยกันเป็นความทรงจำที่ดีมาก 
+          ถึงเนื้อหาในเรื่องหนังเรื่องนี้มันจะเจ็บปวด แต่เราก็ย้อนกลับไปดูตลอดเลยเพราะมันทำให้นึกถึงเธอตอนดูด้วยกัน
+      </div>
+
+      <div class="diary-page page-left" data-page="8">
+        <div class="photo-frame">
+          <img src="/picture/Screenshot 2569-06-27 at 23.23.36.png" alt="ตุ๊กตาตัวแรก">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="8">
+        <div class="date">📍 MEMORY 08 — คุ๊กตาตัวแรก</div>
+        <p class="story-text">
+          พอเราไปดูหนังกัน แล้วไปกิน pepperlunch กันเสร็จเราก็ไปเล่นตู้คีบตุ๊กตากัน แล้วตัวนี้ก็เป็นตุ๊กตาตัวแรกในชีวิตเราที่คีบได้และเป็นตุ๊กตาตัวแรกที่ให้เธอ ตอนนี้ไม่รู้ว่าน้องยังอยู่มั้ยหรือเธอทิ้งไปแล้ว
+          วันนั้นเป็นวันที่มีความสุขมากจนวันนี้่เรายังจำความรู้สึึกนั้นได้อยู่
+      </div>
+
+      <div class="diary-page page-left" data-page="7">
+        <div class="photo-frame">
+          <img src="/picture/Screenshot 2569-06-27 at 23.28.35.png" alt="pepperlunch">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="7">
+        <div class="date">📍 MEMORY 07 — PeperLunch ครั้งแรก</div>
+        <p class="story-text">
+          ร้านนี้เป็นร้านที่เรามากินกันหลังจบดูหนังเรื่องแรกกัน ตอนนั้นเราเดินหากันว่าจะกินอะไร จนมาจบที่ pepperlunch ซึ่งตอนนั้นเราไม่เคยกินร้านนี้เลย เธอก็ไม่เคย 
+          แล้วเราก็สั่งเมนูแบบในรูปเลย เธอกินข้าวเปปเปอร์หมู ส่วนเรากินสปาเก็ตตี๋ เรายังจำได้อยู่ตอนนั้นเราไม่รู้ว่าแต่ละซอสมันปรุงยังไงเราก็เลยใส่ไปทั้งคู่ใส่จนมันเค็มเลย55554 เรารู้สึกผิดมากตอนนั้นทำให้เธอกินข้าวไม่อร่อยเลย แต่ตอนนั้นมันก็เป็นสีสันในชีวิตคู่ของเรานะ
+          เธอถ่ายเราลงด้วยตอนเป็นเชฟกระทะเค็ม
+      </div>
+
+      <div class="diary-page page-left" data-page="9">
+        <div class="photo-frame">
+          <img src="/picture/8c846d726d504ad48cebd6b3997001f9.jpg.webp" alt="donkki">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="9">
+        <div class="date">📍 MEMORY 09 — donkki</div>
+        <p class="story-text">
+          ร้าน donkki เป็นร้านที่เราไปเดินดูของเล่นกันบ่อยมาก เดินดูนู้นดูนี้แต่มันก็สนุกมากเลยนะ แล้วเราชอบไปเดินตรงโซนที่ขายพวกชุดแล้วเอามาแกล้งเธอ
+          เพราะตอนนั้นเราชอบรีแอคชั่นของเธอ มันดูน่ารักดีเราเลยแกล้งเธอบ่อย ถึงตอนนี้มันจะปิดไปแล้วก็ตาม เราอยาไปเดินเล่นกับเธอแบบนั้นอีกจัง
+      </div>
+
+      <div class="diary-page page-left" data-page="10">
+        <div class="photo-frame">
+          <img src="/picture/images.jpeg" alt="KariKori">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="10">
+        <div class="date">📍 MEMORY 10 — KariKori</div>
+        <p class="story-text">
+          ไม่แน่ใจว่าเธอยังจะจำร้านนีี้ได้อยู่ เป็นร้านที่เรากินกันหลายรอบอยู่ ไม่รู้ว่าเธอยังจำได้มั้ย มีวันนึงที่เราซื้อมาแล้วทำมันหกทำให้เธออดกิน เรารู้สึกผิดและเห็นเธอเศร้า 
+          เราเลยไปซื้ออันใหม่ให้เธอ ยังจำรอยยิ้มของเด็กคนนั้นได้อยู่เลย อยากให้ร้านกลับมาเปิดอีกจัง
+      </div>
+
+      <div class="diary-page page-left" data-page="11">
+        <div class="photo-frame">
+          <img src="/picture/ped.jpeg" alt="สวนลุม">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="11">
+        <div class="date">📍 MEMORY 11 — สวนลุม</div>
+        <p class="story-text">
+          เรารู้สึกชอบที่ได้ไปเวลาสวนกับเธอ แบบมันได้ใช้เวลาเงียบๆบรรยากาศดีๆกับเธอไปนาน เหมือนได้พักผ่อนหย่อยใจเลยอะ เราได้ไปเปิดในดงดอกไม้ที่สวยๆมันเหมาะกับเธอมากเลยนะ เราได้มาปั่นเป็ดกันด้วย 
+          มันแอบกลัวนะตอนอยู่บนเรือ เพราะแบบว่าเราตัวหนักกว่าเธอแล้วมันเอียงมาทางเรา ตอนนั้นเราคิดต่างๆนาๆเลย แต่พอผ่านไปสักพักมันก็สนุกและเป็นความทรงจำดีๆเลย
+      </div>
+
+      <div class="diary-page page-left" data-page="12">
+        <div class="photo-frame">
+          <img src="/picture/Screenshot 2569-06-28 at 00.14.06.png" alt="เสื้อ">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="12">
+        <div class="date">📍 MEMORY 12 — เสื้อตัวแรก</div>
+        <p class="story-text">
+          นี้เป็นเสื้อตัวแรกที่เราได้ให้เธอ ถึงมันจะไม่ได้สวยเหมือนเสื้ออื่น แต่อยากให้เธอจากใจจิง ตอนที่เธอใส่แล้วถ่ายส่งมามันทำให้ใจเราละลายเลย มันน่ารักสุดๆ แต่ไม่รู้เธอยังเก็บมันไว้อยู่ไหม
+      </div>
+
+      <div class="diary-page page-left" data-page="13">
+        <div class="photo-frame">
+          <img src="/picture/birth.jpg" alt="วันเกิด">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="13">
+        <div class="date">📍 MEMORY 13 — วันเกิด</div>
+        <p class="story-text">
+          รูปนี้เป็นรูปที่เป็นวันเกิดอายุ 18 ปีของเธอพอดี ตอนนั้นเราไม่ได้มีของขวัญอะไรให้เธอเลย เราทำได้แต่พาเธอมากินข้าว แต่พวกเราก็มีความสุขกันมากจิงๆนะ
+      </div>
+
+      <div class="diary-page page-left" data-page="14">
+        <div class="photo-frame">
+          <img src="/picture/work.jpg" alt="ทำงาน">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="14">
+        <div class="date">📍 MEMORY 14 — ทำงาน</div>
+        <p class="story-text">
+          รูปนี้คือตรงร้านที่เคยทำงาน part time ถึงร้านปิดไปแล้วแต่เรายังจำได้เสมอ อาหมวยชุดแดงที่ียืนหน้าร้านคอยต้อนรับลูกค้า เป็นอาหมวยที่เก่งมากเลยที่ผ่านมาได้ ต้องรับมือกับหลายๆอย่างทั้งลูกค้า ทั้งทีร้านเป็นเด็ก 18 ที่เก่งมากๆเราภูมิใจในตัวเธอเสมอนะ
+          แล้วก็ทุกครั้งที่เราไปthe mall เราก็จะแอบดูว่าเธอทำเป็นไง เหนื่อยมั้ยเป็นอีกเรื่องที่เทออาจไม่รู้ พอเราไม่เห็นเธอหน้าร้านเราก็จะทำเป็นเดินผ่านร้านไปเพื่ออยากรู้เธออยู่รึเปล่า
+      </div>
+
+      <div class="diary-page page-left" data-page="15">
+        <div class="photo-frame">
+          <img src="/picture/lastjpg.jpg" alt="ขอบคุณ">
+        </div>
+      </div>
+      <div class="diary-page page-right" data-page="15">
+        <div class="date">🤍 MEMORY 015 — ครั้งสุดท้าย</div>
+        <p class="story-text">
+          นี้คือครั้งสุดท้ายที่เราได้เจอเธอ ถ้าตอนนั้นรู้ว่ามันจะเป็นครั้งสุดท้ายเราจะขอกอดเธอให้นานที่สุดเท่าที่เราจะทำได้ ซึ่งตอนนี้เราพอรู้แล้วว่าเราไม่มีโอกาสนั้นแล้ว
+          สุดท้ายแล้ว...นี้เราอยาก ขอบคุณเธอจริง ๆ ที่ครั้งหนึ่งเธอเคยเข้ามาเป็นเรื่องราวดี ๆ ในชีวิตเรานะ ได้เข้ามาทำให้เราได้เข้าใจกับความรักทำให้เราเติบโต มันเป็นความทรงจำที่ดีที่สุดในชีวิตเราเลยและเราจะไม่ลืมมันแน่นอน
+          แม้สมุดเล่มนี้จะไม่มีหน้าถัดไปให้เขียนต่อแล้ว แต่ทุกหน้าที่เคยเขียนร่วมกันมา จะเป็นความทรงจำที่เราจดจำไว้ด้วยรอยยิ้มและเปิดอ่านดูในใจเสมอไปนะ เราอยากให้เธอรู้ว่าถ้าวันไหนที่เธอเจอกับคนที่โหดร้ายคนที่ทำให้เธอเสียใจหันมาเธอจะเจอเรายืนรอเธอเสมอนะ
+          โชคดีนะ :)
+        </p>
+      </div>
+
+    </div>
+
+    <div class="nav-container">
+      <button class="nav-btn" id="prevBtn" disabled>หน้าก่อนหน้า</button>
+      <span class="page-number" id="pageIndicator">หน้า 1 / 15</span>
+      <button class="nav-btn" id="nextBtn">หน้าถัดไป</button>
+    </div>
+  </div>
+
+  <!-- ใส่ไฟล์เพลง .mp3 ของคุณไว้ในโฟลเดอร์ เช่น /music/our-song.mp3 -->
+  <audio id="bgMusic" src="/music/Lose You - Sad & Emotional Piano Song Instrumental.mp3" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

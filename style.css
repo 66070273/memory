@@ -1,0 +1,410 @@
+/* ==========================================================================
+   1. Reset & Global Styles
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4eee1; 
+  font-family: 'Anuphan', sans-serif;
+  color: #4a3f35;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden; /* ป้องกันหน้าจอเลื่อนซ้ายขวาในมือถือ */
+  padding: 20px;
+}
+
+/* ==========================================================================
+   2. Envelope Intro Overlay (ซองจดหมายขนาดกระชับเปิดง่ายทุกอุปกรณ์)
+   ========================================================================== */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f0e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  padding: 20px;
+}
+
+.intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50px);
+}
+
+.envelope-wrapper {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  max-width: 360px;
+  height: 240px;
+  background-color: #e6dfd5;
+  box-shadow: 0 15px 35px rgba(140, 106, 92, 0.2);
+  border-radius: 0 0 8px 8px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-top: 130px solid #dcd3c5;
+  transform-origin: top;
+  transition: transform 0.6s ease-in-out;
+  z-index: 3;
+}
+
+/* ปรับมุมองศาฝาซองสำหรับจอที่เล็กกว่า 360px */
+@media (max-width: 380px) {
+  .envelope-wrapper { max-width: 300px; height: 200px; }
+  .envelope-flap { border-left-width: 150px; border-right-width: 150px; border-top-width: 110px; }
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ebd9c8 30%, #e1cebc 100%);
+  border-radius: 0 0 8px 8px;
+  z-index: 2;
+}
+
+.letter-paper {
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+  height: 85%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.8s ease-in-out, bottom 0.8s ease-in-out;
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.letter-paper p {
+  font-family: 'Charm', cursive;
+  font-size: 1.6rem;
+  color: #725246;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.click-hint {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #a69588;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+.envelope-wrapper.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope-wrapper.open .letter-paper {
+  transform: translateY(-120px);
+  z-index: 4;
+}
+
+/* ==========================================================================
+   3. Diary Book Layout (ปรับปรุงให้ใหญ่เต็มตา + ยืดหยุ่นได้)
+   ========================================================================== */
+.main-content {
+  opacity: 0;
+  transition: opacity 1s ease-in-out 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1140px; /* ขยายขนาดความกว้างสุดของสมุดให้ใหญ่ขึ้น */
+  padding: 10px;
+}
+
+.main-content.visible {
+  opacity: 1;
+}
+
+/* ตัวเล่มสมุดไดอารี่ (สไตล์เปิดกางสองหน้าในคอม) */
+.diary-book {
+  display: flex;
+  width: 100%;
+  height: 650px; /* เพิ่มความสูงของสมุดจากเดิม 500px เป็น 650px ให้ใหญ่เต็มตา */
+  background-color: #fffdf9;
+  box-shadow: 0 25px 50px rgba(74, 63, 53, 0.2);
+  border-radius: 6px;
+  position: relative;
+  border: 1px solid #e8e1d5;
+}
+
+/* เส้นแกนกลางสมุด */
+.diary-book::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.06), rgba(0,0,0,0.12), rgba(0,0,0,0.06));
+  z-index: 5;
+}
+
+/* หน้ากระดาษ */
+.diary-page {
+  width: 50%;
+  height: 100%;
+  padding: 50px; /* เพิ่มพื้นที่เว้นขอบข้างใน */
+  display: none;
+  flex-direction: column;
+  animation: fadeInPage 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.diary-page.active {
+  display: flex;
+}
+
+/* หน้าฝั่งซ้าย: แปะรูปถ่าย */
+.page-left {
+  justify-content: center;
+  align-items: center;
+  background-color: #fffdf9;
+  border-right: 1px solid #f2ece0;
+}
+
+.photo-frame {
+  background: #ffffff;
+  padding: 16px 16px 45px 16px; /* เว้นขอบล่างให้ดูเป็นกรอบรูปคลาสสิก */
+  box-shadow: 5px 8px 25px rgba(0,0,0,0.08);
+  transform: rotate(-1.5deg); /* เอียงนิด ๆ ให้มีมิติ */
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* จัดการให้รูปไม่บดบังหรือยืดเบี้ยว */
+  border: 1px solid #f0eae0;
+}
+
+/* หน้าฝั่งขวา: คำบรรยาย */
+.page-right {
+  justify-content: flex-start;
+  background-color: #fffdf9;
+  padding-top: 60px;
+  overflow-y: auto; /* หากข้อความยาวมากจะสามารถเลื่อนอ่านในหน้านั้นได้ */
+}
+
+.page-right .date {
+  font-size: 1rem;
+  color: #a69588;
+  margin-bottom: 25px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.page-right .story-text {
+  font-family: 'Charm', cursive;
+  font-size: 1.65rem; /* ขยายขนาดฟอนต์คำบรรยายให้อ่านง่ายเต็มตาขึ้น */
+  line-height: 1.9;
+  color: #5c5043;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+/* ==========================================================================
+   4. Navigation Buttons (ปุ่มเปลี่ยนหน้า)
+   ========================================================================== */
+.nav-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 35px;
+  align-items: center;
+}
+
+.nav-btn {
+  background-color: #8c6a5c;
+  color: #ffffff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 12px rgba(140, 106, 92, 0.2);
+}
+
+.nav-btn:hover {
+  background-color: #725246;
+  transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+  background-color: #d1c7bd;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.page-number {
+  font-size: 0.95rem;
+  color: #a08e81;
+}
+
+/* ==========================================================================
+   5. Responsive Design (ระบบปรับหน้าจออัตโนมัติสำหรับมือถือและแท็บเล็ต)
+   ========================================================================== */
+
+/* สำหรับแท็บเล็ตและหน้าจอขนาดกลาง (ปรับลดความสูงเล็กลงเล็กน้อยเพื่อไม่ให้ล้นจอ) */
+@media (max-width: 1024px) {
+  .diary-book {
+    height: 550px;
+  }
+  .diary-page {
+    padding: 35px;
+  }
+  .page-right .story-text {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   6. Custom Food Gallery (สำหรับหน้า 2)
+   ========================================================================== */
+.clickable-gallery {
+  position: relative;
+  cursor: pointer;
+}
+
+[data-page="15"] .story-text {
+  animation: textFadeIn 2.5s ease-in-out forwards;
+}
+
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ข้อความบอกใบ้เล็ก ๆ ใต้รูปภาพโพลารอยด์ */
+.gallery-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #a69588;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  pointer-events: none; /* ป้องกันไม่ให้บังการคลิกรูป */
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ให้รูปดูมีการขยับเล็กน้อย */
+.clickable-gallery:hover img {
+  filter: brightness(0.95);
+  transition: all 0.3s ease;
+}
+
+/* สำหรับสมาร์ทโฟน / หน้าจอแนวตั้ง (Responsive หุบเป็นหน้าเดี่ยวเรียงกันแนวดิ่ง) */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    align-items: flex-start; /* ให้เริ่มแสดงจากด้านบน ป้องกันจอล้น */
+    overflow-y: auto; /* เปิดให้เลื่อนขึ้นลงได้บนมือถือ */
+  }
+
+  .main-content {
+    padding-top: 20px;
+  }
+
+  /* ปรับสมุดให้กลายเป็นบล็อกหน้าเดี่ยว */
+  .diary-book {
+    flex-direction: column; 
+    height: auto; /* ปล่อยให้ความสูงขยายตามคอนเทนต์อัตโนมัติ */
+    box-shadow: 0 10px 25px rgba(74, 63, 53, 0.1);
+  }
+
+  /* ซ่อนเส้นแกนกลางสมุดในมือถือ */
+  .diary-book::after {
+    display: none;
+  }
+
+  /* ปรับหน้ากระดาษให้เต็ม 100% */
+  .diary-page {
+    width: 100%;
+    height: auto;
+    padding: 25px 20px;
+  }
+
+  /* จัดเรียงหน้ากระดาษ */
+  .page-left {
+    border-right: none;
+    border-bottom: 1px dashed #e8e1d5; /* เพิ่มเส้นคั่นระหว่างรูปกับข้อความ */
+  }
+
+  .photo-frame {
+    width: 100%;
+    height: 300px; /* ล็อกความสูงรูปบนมือถือให้พอดีสายตา */
+    padding: 10px 10px 30px 10px;
+    transform: none; /* ยกเลิกการเอียงเพื่อประหยัดพื้นที่หน้าจอ */
+  }
+
+  .page-right {
+    padding-top: 20px;
+  }
+
+  .page-right .date {
+    margin-bottom: 15px;
+  }
+
+  .page-right .story-text {
+    font-size: 1.35rem; /* ปรับฟอนต์ให้กระชับลงเล็กน้อยบนจอมือถือ */
+    line-height: 1.7;
+  }
+
+  .nav-container {
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .nav-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
